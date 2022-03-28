@@ -1,0 +1,62 @@
+<main class="section mx-auto mt-sm-5 mt-0">
+  <h4 class="section__title">Registration</h4>
+
+  <form class="section__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form__field mb-2">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" required formControlName="email">
+      <mat-error *ngIf="form.get('email')?.errors?.['required'] || form.get('email')?.errors?.['email']">Email is
+        invalid"
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.errors?.['forbiddenEmail']"
+                 class="invalid-feedback">Email is already taken
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__field mb-2">
+      <mat-label>Name and surname</mat-label>
+      <input matInput placeholder="Galanin Dmitry" required formControlName="name">
+      <mat-error *ngIf="form.get('name')?.errors?.['required']">Name field must be filled
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__field mb-2">
+      <mat-label>Enter your password</mat-label>
+      <input matInput formControlName="password" type="password" (change)="onPasswordChange()">
+      <mat-error *ngIf="form.get('password')?.errors?.['required']">Password cannot be empty</mat-error>
+      <mat-error *ngIf="form.get('password')?.errors?.['minlength']">Password should contains
+        {{ form.get('password')?.errors?.['minlength']['requiredLength'] }} or more symbols
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__field mb-4">
+      <mat-label>Repeat your password</mat-label>
+      <input matInput formControlName="password2" type="password" (change)="onPasswordChange()">
+      <mat-error *ngIf="confirm_password.hasError('mismatch')">Passwords should be equal</mat-error>
+    </mat-form-field>
+
+    <div class="form_field row mb-4">
+      <div class="col-1">
+        <input type="checkbox" id="isTeacher" formControlName="isTeacher">
+      </div>
+      <div class="col">
+        <label for="isTeacher" class="fw-bold">I am a teacher</label>
+      </div>
+    </div>
+
+    <div class="form_field row mb-4">
+      <div class="col-1">
+        <input type="checkbox" id="agree" formControlName="agree">
+      </div>
+      <div class="col">
+        <label for="agree" class="fw-bold">I agree to the terms of the user agreement
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="form__submit btn btn-submit mb-5" [disabled]="form.invalid">Sign in
+    </button>
+
+    <p>Already have an account? <a routerLink="/"><span class="click">Click here to log in</span></a></p>
+  </form>
+</main>

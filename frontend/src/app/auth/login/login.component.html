@@ -1,0 +1,43 @@
+<main class="section mx-auto mt-sm-5 mt-0">
+  <h4 class="section__title">Login</h4>
+  <div *ngIf="showError" class="alert alert-danger">
+    <div class="row">Failed to sign in</div>
+    <div class="row">Please make sure that you've entered your login and password correctly.</div>
+    <ul>
+      <li>Is Caps Lock on?</li>
+      <li>Maybe you are using the wrong input language? (e.g. German vs. English)</li>
+      <li>Try typing your password in a text editor and then copying and pasting it into the "Password" field.</li>
+      <li>If your password was entered correctly, try entering the phone number linked to your account as your login
+        instead of your email address.
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="showCanLogin" class="alert alert-success">Now you can log in!</div>
+
+  <form class="section__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form__field mb-4">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" required formControlName="email">
+      <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Email is invalid"</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__field mb-4">
+      <mat-label>Enter your password</mat-label>
+      <input matInput formControlName="password" [type]="passHide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="passHide = !passHide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="passHide">
+        <mat-icon>{{passHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')?.errors?.['required']">Password cannot be empty</mat-error>
+      <mat-error *ngIf="form.get('password')?.errors?.['minlength']">Password should contains
+        {{ form.get('password')?.errors?.['minlength']['requiredLength'] }} or more symbols
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" class="form__submit btn btn-submit mb-5" [disabled]="form.invalid && form.touched">Sign in</button>
+
+
+    <p>No account? <a routerLink="/registration"><span class="click">Click here to register</span></a></p>
+
+  </form>
+</main>
