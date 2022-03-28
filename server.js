@@ -1,13 +1,12 @@
-const express = require('express')
-const app = express()
-app.use(express.json());
-
-
+const express = require('express');
 const db = require('./mongodb');
-
+const cors = require('cors');
 const courseSchema = require('./models/courseSchema');
 const userSchema = require('./models/userSchema')
 
+const app = express();
+app.use(cors())
+app.use(express.json());
 
 app.route('/api/courses').get(async (req, res) => {
   const courses = await courseSchema.find({})
@@ -72,7 +71,7 @@ app.route('/api/users/:id').delete(async (req, res) => {
   res.sendStatus(204).send("Deleted")
 })
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log('Server started!')
 })
