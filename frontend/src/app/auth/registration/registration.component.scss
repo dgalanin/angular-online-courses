@@ -1,0 +1,57 @@
+.section {
+  overflow: hidden;
+  padding: 2rem;
+  border: 1px solid whitesmoke;
+  border-radius: 20px;
+  background: white;
+  max-width: 600px;
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: xx-large;
+    margin-bottom: 2rem;
+  }
+
+}
+
+.form {
+  &__field {
+    font-size: 17.5px;
+    width: 100%;
+    background: none;
+  }
+
+  &__submit {
+    display: block;
+    margin: 0 auto;
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #313131;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: underline black;
+}
+
+.click {
+  color: black;
+}
+
