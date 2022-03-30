@@ -8,7 +8,7 @@ export class User {
     public isTeacher: boolean,
     public currentCourses: Array<Course> = [],
     public achievements: Array<Course> =  [],
-    public id?: string
+    public _id?: string
   ) {
   }
 }
