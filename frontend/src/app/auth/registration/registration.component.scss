@@ -1,8 +1,6 @@
 .section {
   overflow: hidden;
   padding: 2rem;
-  border: 1px solid whitesmoke;
-  border-radius: 20px;
   background: white;
   max-width: 600px;
 
@@ -39,19 +37,15 @@
       cursor: not-allowed;
     }
   }
-}
 
-p {
-  text-align: center;
-}
+  &__footer {
+    text-align: center;
 
-a {
-  cursor: pointer;
-  font-weight: 700;
-  text-decoration: underline black;
+    &_underline {
+      color: black;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: underline black;
+    }
+  }
 }
-
-.click {
-  color: black;
-}
-
