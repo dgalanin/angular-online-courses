@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {AuthModule} from "./auth/auth.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
+import {StoreModule} from '@ngrx/store';
+import {currentUserReducer} from "./Store/currentUser/currentUser.reducers";
+import {EffectsModule} from "@ngrx/effects";
+import {CurrentUserEffects} from "./Store/currentUser/currentUser.effects";
 
 @NgModule({
   declarations: [
@@ -16,9 +20,12 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({currentUser: currentUserReducer}),
+    EffectsModule.forRoot([CurrentUserEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
