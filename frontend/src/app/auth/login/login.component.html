@@ -18,7 +18,7 @@
     <mat-form-field class="form__field mb-4">
       <mat-label>Enter your email</mat-label>
       <input matInput placeholder="pat@example.com" required formControlName="email">
-      <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Email is invalid"</mat-error>
+      <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Email is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form__field mb-4">
@@ -37,7 +37,7 @@
     <button type="submit" class="form__submit btn btn-submit mb-5" [disabled]="form.invalid && form.touched">Sign in</button>
 
 
-    <p>No account? <a routerLink="/registration"><span class="click">Click here to register</span></a></p>
+    <p class="form__footer">No account? <a routerLink="/registration"><span class="form__footer_underline">Click here to register</span></a></p>
 
   </form>
 </main>
