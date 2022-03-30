@@ -30,31 +30,34 @@ export class UsersService {
 
   getCurrentCourses(user: User): Observable<Array<Course>> {
     return this.http
-      .get<User>(`http://localhost:3000/api/users/${user.id}`)
+      .get<User>(`http://localhost:3000/api/users/${user._id}`)
       .pipe(map((user: User) => {
         return user.currentCourses;
       }))
   }
 
   joinCourse(user: User, course: Course) {
-    user.currentCourses.push(course);
-
     return this.http
-      .put(`http://localhost:3000/api/users/${user.id}`, user)
+      .put(`http://localhost:3000/api/users/${user._id}`, {currentCourses: [...user.currentCourses, course]})
   }
 
-  leaveCourse(user: User, course: Course) {
-    user.currentCourses = user.currentCourses.filter(c => c.title != course.title);
 
+  leaveCourse(user: User, course: Course) {
     return this.http
-      .put<User>(`http://localhost:3000/api/users/${user.id}`, user)
+      .put<User>(`http://localhost:3000/api/users/${user._id}`, {
+        currentCourses: [...user.currentCourses.filter(
+          c => c.title !== course.title && c.description !== course.description && c.authorName !== course.authorName
+        )]
+      })
   }
 
   achieveCourse(user: User, course: Course) {
-    user.currentCourses = user.currentCourses.filter(c => c.title != course.title);
-    user.achievements.push(course);
-
     return this.http
-      .put<User>(`http://localhost:3000/api/users/${user.id}`, user)
+      .put<User>(`http://localhost:3000/api/users/${user._id}`, {
+        currentCourses: [...user.currentCourses.filter(
+          c => c.title !== course.title && c.description !== course.description && c.authorName !== course.authorName
+        )],
+        achievements: [...user.achievements, course]
+      })
   }
 }
