@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {UsersService} from "../../shared/services/users.service";
+import {AuthService} from "../../shared/services/auth.service";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private usersService: UsersService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -44,8 +46,7 @@ export class LoginComponent implements OnInit {
       .subscribe((user) => {
         if (user) {
           if (user.password === formData.password) {
-            // TODO authorization
-            console.log("Signed in!");
+            this.authService.login(user);
             this.showError = false;
           } else {
             this.showError = true;
