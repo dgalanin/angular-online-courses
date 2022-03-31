@@ -72,7 +72,7 @@ app.route('/api/users/:id').delete(async (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'))
+  res.sendFile(`${__dirname}/public/index.html`)
 })
 
 app.use(express.static('public'))
