@@ -8,6 +8,11 @@ import { CreateCoursePageComponent } from './create-course-page/create-course-pa
 import {SharedModule} from "../shared/shared.module";
 import {SystemRoutingModule} from "./system.routing-module";
 import {SystemComponent} from "./system.component";
+import {MatCardModule} from "@angular/material/card";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatButtonModule} from "@angular/material/button";
+import { LessonsComponent } from './current-courses-page/lessons/lessons.component';
 
 
 
@@ -18,12 +23,17 @@ import {SystemComponent} from "./system.component";
     CoursesPageComponent,
     CurrentCoursesPageComponent,
     AchievementsPageComponent,
-    CreateCoursePageComponent
+    CreateCoursePageComponent,
+    LessonsComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    SystemRoutingModule
+    SystemRoutingModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatButtonModule
   ]
 })
 export class SystemModule { }

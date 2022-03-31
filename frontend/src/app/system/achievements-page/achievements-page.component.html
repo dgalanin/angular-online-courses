@@ -1,1 +1,17 @@
-<p>achievements-page works!</p>
+<main *ngIf="this.achievements.length">
+  <h2>Your achievements: </h2>
+  <mat-card class="mt-4" *ngFor="let achieve of achievements">
+    <mat-card-title>{{achieve.title}}</mat-card-title>
+    <mat-card-subtitle><small>{{achieve.description}}</small></mat-card-subtitle>
+    <mat-card-content>
+      <p>Count of lessons: {{achieve.lessons.length}}</p>
+      <p><b>By: {{achieve.authorName}}</b></p>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+  </mat-card>
+</main>
+<main *ngIf="!this.achievements.length">
+  You haven`t got any achievements yet.
+  <br>
+  <a class="link" [routerLink]="['/system', 'current-courses']">Complete some course here!</a>
+</main>

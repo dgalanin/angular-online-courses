@@ -19,7 +19,8 @@ export class TeacherGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let user: User = this.currentUserService.get();
+    let user!: User;
+    this.currentUserService.get().subscribe(u => user = u);
     if (user.isTeacher) {
       return true;
     } else {
