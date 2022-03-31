@@ -18,7 +18,7 @@ export const currentUserReducer = createReducer(
   on(CurrentUserActions.leaveCourseSuccess, (state, course) => ({
     ...state,
     currentCourses: [...state.currentCourses.filter(
-      c => c.title !== course.title && c.description !== course.description && c.authorName !== course.authorName
+      c => c.title !== course.title
     )]
   })),
   on(CurrentUserActions.achieveCourseSuccess, (state, course) => ({
