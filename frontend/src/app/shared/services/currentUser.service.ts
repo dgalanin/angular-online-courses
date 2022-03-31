@@ -6,7 +6,7 @@ import {CurrentUserActions} from "../../Store/currentUser/currentUser.actions";
 import {Course} from "../models/course.model";
 
 @Injectable()
-export class currentUserService {
+export class CurrentUserService {
   constructor(private store: Store) {
   }
 
