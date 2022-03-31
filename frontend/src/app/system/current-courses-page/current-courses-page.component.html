@@ -1,1 +1,22 @@
-<p>current-courses-page works!</p>
+<main *ngIf="this.currentCourses.length">
+  <h2>Your current courses: </h2>
+  <mat-card class="mt-4" *ngFor="let course of currentCourses">
+    <mat-card-title>{{course.title}}</mat-card-title>
+    <mat-card-subtitle><small>{{course.description}}</small></mat-card-subtitle>
+    <mat-card-content>
+      <p>Count of lessons: {{course.lessons.length}}</p>
+      <p><b>By: {{course.authorName}}</b></p>
+      <app-lessons [lessons]="course.lessons"></app-lessons>
+      <mat-card-actions>
+        <button mat-button class="btn-success" (click)="achieveCourse(course)">Achieve</button>
+        <button mat-button class="btn-danger" (click)="leaveCourse(course)">Leave</button>
+      </mat-card-actions>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+  </mat-card>
+</main>
+<main *ngIf="!this.currentCourses.length">
+  You haven`t got any courses yet.
+  <br>
+  <a class="link" [routerLink]="['/system', 'courses']">Choose some course here</a>
+</main>

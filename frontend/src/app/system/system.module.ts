@@ -12,6 +12,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatButtonModule} from "@angular/material/button";
+import { LessonsComponent } from './current-courses-page/lessons/lessons.component';
 
 
 
@@ -22,7 +23,8 @@ import {MatButtonModule} from "@angular/material/button";
     CoursesPageComponent,
     CurrentCoursesPageComponent,
     AchievementsPageComponent,
-    CreateCoursePageComponent
+    CreateCoursePageComponent,
+    LessonsComponent
   ],
   imports: [
     CommonModule,
