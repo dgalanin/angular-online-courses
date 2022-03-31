@@ -14,11 +14,11 @@ export class CoursesService {
 
   getCourses(): Observable<Array<Course>> {
     return this.http
-      .get<Array<Course>>(`http://localhost:3000/api/courses`)
+      .get<Array<Course>>(`api/courses`)
   }
 
   createCourse(course: Course) {
     return this.http
-      .post<CreateResponse>(`http://localhost:3000/api/courses`, course)
+      .post<CreateResponse>(`api/courses`, course)
   }
 }
