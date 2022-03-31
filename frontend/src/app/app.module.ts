@@ -10,20 +10,22 @@ import {StoreModule} from '@ngrx/store';
 import {currentUserReducer} from "./Store/currentUser/currentUser.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {CurrentUserEffects} from "./Store/currentUser/currentUser.effects";
+import {SystemModule} from "./system/system.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AuthModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    StoreModule.forRoot({currentUser: currentUserReducer}),
-    EffectsModule.forRoot([CurrentUserEffects])
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AuthModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        StoreModule.forRoot({currentUser: currentUserReducer}),
+        EffectsModule.forRoot([CurrentUserEffects]),
+        SystemModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
