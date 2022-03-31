@@ -1,1 +1,45 @@
-<p>create-course-page works!</p>
+<form class="form-inline mt-4" [formGroup]="courseForm" (ngSubmit)="onCourseFormSubmit()">
+  <h2 class="mb-5">Create new course</h2>
+  <div *ngIf="showIfSuccess" class="alert alert-success">Successfully!</div>
+  <div class="form-group mb-2">
+    <input type="text" class="form-control" id="title" placeholder="Title" formControlName="title">
+  </div>
+  <div class="form-group mb-2">
+    <textarea class="form-control" rows="5" cols="33" id="description" placeholder="Description"
+              formControlName="description"></textarea>
+  </div>
+  <div class="form-group mb-2">
+    <p id="lessonsCount">
+      Lessons count: {{ lessons.length }}
+      <a class="btn btn-success m-1" (click)="showAddLessonForm = true">Add lesson</a>
+    </p>
+    <div *ngIf="showAddLessonForm">
+      <form [formGroup]="lessonForm" (ngSubmit)="onLessonFormSubmit()">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Add a lesson</h5>
+          </div>
+          <div class="modal-body">
+            <div class="form-group mb-2">
+              <input type="text" class="form-control" id="topic" placeholder="Topic" formControlName="topic">
+            </div>
+            <div class="form-group mb-2">
+              <textarea class="form-control" rows="5" cols="33" id="lesson" placeholder="Lesson description"
+                        formControlName="lesson"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success mx-auto" [disabled]="lessonForm.invalid">
+              Add
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="form-group m-2">
+    <button type="submit" class="btn btn-submit btn-dark btn-add m-2"
+            [disabled]="courseForm.invalid || lessons.length < 1">Confirm
+    </button>
+  </div>
+</form>
