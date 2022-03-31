@@ -10,6 +10,7 @@ export const currentUserReducer = createReducer(
   initialState,
   on(CurrentUserActions.get, (state) => state),
   on(CurrentUserActions.set, (state, user) => user),
+  on(CurrentUserActions.reSet, () => initialState),
   on(CurrentUserActions.joinCourseSuccess, (state, course) => ({
     ...state,
     currentCourses: [...state.currentCourses, course]
