@@ -10,6 +10,9 @@ export namespace CurrentUserActions {
     '[Current user] Set',
     (user: User) => user
   );
+  export const reSet = createAction(
+    '[Current user] reSet'
+  );
   export const joinCourse = createAction(
     '[Current user] Join course',
     (course: Course) => course
