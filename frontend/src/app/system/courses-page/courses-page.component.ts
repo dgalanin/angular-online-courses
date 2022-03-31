@@ -24,11 +24,12 @@ export class CoursesPageComponent implements OnInit {
 
   joinCourse(course: Course) {
     if (this.user.currentCourses.find(el => el.title == course.title)) {
-      alert("You have already joined to this course");
+      alert("You have already joined to this course!");
     } else if (this.user.achievements.find(el => el.title == course.title)) {
-      alert("You are already achieved to this course");
+      alert("You are already achieved to this course!");
     } else {
       this.currentUserService.joinToCourse(course);
+      alert("You have been joined to the course!")
     }
   }
 
