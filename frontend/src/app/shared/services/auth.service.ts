@@ -1,22 +1,22 @@
 import {Injectable} from "@angular/core";
-import {Store} from "@ngrx/store";
 import {User} from "../models/user.model";
-import {CurrentUserActions} from "../../Store/currentUser/currentUser.actions";
+import {currentUserService} from "./currentUser.service";
 
 @Injectable()
 export class AuthService {
-  constructor(private store: Store) {
+  constructor(private currentUserService: currentUserService) {
   }
+
   private isAuthenticated = false;
 
   login(user: User) {
     this.isAuthenticated = true;
-    this.store.dispatch(CurrentUserActions.set(user));
+    this.currentUserService.set(user);
   }
 
   logout() {
     this.isAuthenticated = false;
-    this.store.dispatch(CurrentUserActions.reSet());
+    this.currentUserService.reSet();
   }
 
   isLoggedIn(): boolean {
