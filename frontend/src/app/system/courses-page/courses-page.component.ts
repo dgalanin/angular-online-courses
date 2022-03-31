@@ -18,14 +18,14 @@ export class CoursesPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.currentUserService.get();
+    this.currentUserService.get().subscribe(u => this.user = u);
     this.coursesService.getCourses().subscribe(c => this.courses = c);
   }
 
   joinCourse(course: Course) {
     if (this.user.currentCourses.find(el => el.title == course.title)) {
       alert("You have already joined to this course");
-    } else if(this.user.achievements.find(el => el.title == course.title)) {
+    } else if (this.user.achievements.find(el => el.title == course.title)) {
       alert("You are already achieved to this course");
     } else {
       this.currentUserService.joinToCourse(course);

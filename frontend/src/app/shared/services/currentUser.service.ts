@@ -4,16 +4,15 @@ import {User} from "../models/user.model";
 import {CurrentUserSelectors} from "../../Store/currentUser/currentUser.selectors";
 import {CurrentUserActions} from "../../Store/currentUser/currentUser.actions";
 import {Course} from "../models/course.model";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class CurrentUserService {
   constructor(private store: Store) {
   }
 
-  get(): User {
-    let user!: User;
-    this.store.select(CurrentUserSelectors.user).subscribe(u => user = u);
-    return user;
+  get(): Observable<User> {
+    return this.store.select(CurrentUserSelectors.user);
   }
 
   set(user: User): void {
