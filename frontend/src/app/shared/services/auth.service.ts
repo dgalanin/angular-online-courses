@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {User} from "../models/user.model";
+
 import {CurrentUserService} from "./currentUser.service";
 
 @Injectable()
