@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         if (user) {
           if (user.password === formData.password) {
             this.authService.login(user);
+            this.router.navigate(['/system', 'courses']);
             this.showError = false;
           } else {
             this.showError = true;
