@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-light p">
+  <div class="container">
+    <img src="favicon.ico" alt="Home Bookkeeping" width="25" height="25">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/system', 'courses']" routerLinkActive="active">All courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/system', 'current-courses']" routerLinkActive="active">Your current
+            courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/system', 'achievements']" routerLinkActive="active">Your achievements</a>
+        </li>
+        <li *ngIf="user.isTeacher" class="nav-item">
+          <a class="nav-link" [routerLink]="['/system', 'create-course']" routerLinkActive="active">Create a new
+            course</a>
+        </li>
+      </ul>
+      <div class="col pull-left">
+      </div>
+      <div class="col dropdown">
+        <a class="nav-link dropdown-toggle greetings" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          <span>Hello, {{ user.name }}</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="onLogout()"><i class="fa fa-power-off"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

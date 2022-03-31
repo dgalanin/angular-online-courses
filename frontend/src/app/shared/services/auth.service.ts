@@ -1,10 +1,11 @@
 import {Injectable} from "@angular/core";
 import {User} from "../models/user.model";
-import {currentUserService} from "./currentUser.service";
+
+import {CurrentUserService} from "./currentUser.service";
 
 @Injectable()
 export class AuthService {
-  constructor(private currentUserService: currentUserService) {
+  constructor(private currentUserService: CurrentUserService) {
   }
 
   private isAuthenticated = false;

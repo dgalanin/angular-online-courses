@@ -37,6 +37,9 @@
       cursor: not-allowed;
     }
   }
+  &_underline {
+    text-decoration: underline black;
+  }
 
   &__footer {
     text-align: center;

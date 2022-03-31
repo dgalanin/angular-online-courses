@@ -1,4 +1,4 @@
-<main class="section mx-auto mt-sm-5 mt-0">
+<main class="section mx-auto mt-0">
   <h4 class="section__title">Login</h4>
   <div *ngIf="showError" class="alert alert-danger">
     <div class="row">Failed to sign in</div>
@@ -13,6 +13,7 @@
     </ul>
   </div>
   <div *ngIf="showCanLogin" class="alert alert-success">Now you can log in!</div>
+  <div *ngIf="showNeedLogin" class="alert alert-danger">You should log in!</div>
 
   <form class="section__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="form__field mb-4">
