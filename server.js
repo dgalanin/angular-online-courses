@@ -28,7 +28,6 @@ app.route('/api/courses').post(async (req, res) => {
 app.route('/api/courses/:id').put(async (req, res) => {
     const id = req.params.id;
     const new_course = req.body;
-    console.log(new_course);
     await courseSchema.findOneAndUpdate({_id: id}, new_course);
     res.status(201).send(new_course);
 });
@@ -60,7 +59,6 @@ app.route('/api/users').post(async (req, res) => {
 app.route('/api/users/:id').put(async (req, res) => {
     const id = req.params.id;
     const new_user = req.body;
-    console.log(new_user);
     await userSchema.findOneAndUpdate({_id: id}, new_user);
     res.status(201).send(new_user);
 })
