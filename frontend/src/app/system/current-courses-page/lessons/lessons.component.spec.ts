@@ -4,7 +4,7 @@ import {Lesson} from "../../../shared/models/lesson.model";
 import {By} from "@angular/platform-browser";
 
 
-describe('CurrentCoursesPageComponent', () => {
+describe('LessonsComponent', () => {
   let component: LessonsComponent;
   let fixture: ComponentFixture<LessonsComponent>;
 
