@@ -1,6 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AchievementsPageComponent } from './achievements-page.component';
+import {Observable, of} from "rxjs";
+import {User} from "../../shared/models/user.model";
+import {CurrentUserService} from "../../shared/services/currentUser.service";
+
+import {Course} from "../../shared/models/course.model";
+import {AchievementsPageComponent} from "./achievements-page.component";
+
+class mockCurrentUserService {
+  mockUser = new User("mockEmail", "mockPass", "mockName", true, [], [new Course("mockTitle", "mockDesc", "mockAuthor", []), new Course("mockTitle2", "mockDesc", "mockAuthor", [])]);
+
+  get(): Observable<User> {
+    return of(this.mockUser);
+  }
+}
 
 describe('AchievementsPageComponent', () => {
   let component: AchievementsPageComponent;
@@ -8,9 +21,15 @@ describe('AchievementsPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AchievementsPageComponent ]
+      imports: [],
+      declarations: [AchievementsPageComponent],
+      providers: [
+        {
+          provide: CurrentUserService, useClass: mockCurrentUserService
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +38,14 @@ describe('AchievementsPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get user achievements', () => {
+    component.ngOnInit();
+    expect(component.achievements.length).toEqual(2);
+    expect(component.achievements[0].title).toEqual('mockTitle');
+    expect(component.achievements[1].title).toEqual('mockTitle2');
   });
 });
