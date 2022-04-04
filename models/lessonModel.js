@@ -1,6 +1,6 @@
 const lessonModel = {
-  topic: String,
-  lesson: String
+    topic: String,
+    lesson: String
 };
 
 
