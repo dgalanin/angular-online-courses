@@ -69,7 +69,7 @@ app.route('/api/users/:id').delete(async (req, res) => {
     res.sendStatus(204).send("Deleted");
 });
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/public/index.html`);
 });
 
