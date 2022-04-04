@@ -2,23 +2,23 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Course} from "../models/course.model";
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
-interface CreateResponse {
-  result: string
-}
 
 @Injectable()
 export class CoursesService {
   constructor(private http: HttpClient) {
   }
 
+  readonly apiUrl = environment.apiURL;
+
   getCourses(): Observable<Array<Course>> {
     return this.http
-      .get<Array<Course>>(`http://localhost:3000/api/courses`)
+      .get<Array<Course>>(`${this.apiUrl}/api/courses`)
   }
 
-  createCourse(course: Course) {
+  createCourse(course: Course): Observable<Course> {
     return this.http
-      .post<CreateResponse>(`http://localhost:3000/api/courses`, course)
+      .post<Course>(`${this.apiUrl}/api/courses`, course)
   }
 }
