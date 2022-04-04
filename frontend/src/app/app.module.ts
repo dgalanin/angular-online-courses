@@ -16,16 +16,16 @@ import {SystemModule} from "./system/system.module";
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        AuthModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        StoreModule.forRoot({currentUser: currentUserReducer}),
-        EffectsModule.forRoot([CurrentUserEffects]),
-        SystemModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AuthModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    StoreModule.forRoot({currentUser: currentUserReducer}),
+    EffectsModule.forRoot([CurrentUserEffects]),
+    SystemModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
