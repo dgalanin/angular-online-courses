@@ -20,7 +20,7 @@ class mockCurrentUserService {
   }
 }
 
-class mockCoursesServer {
+class mockCoursesService {
   getCourses(): Observable<Array<Course>> {
     const mockCourse = new Course("mockTitle", "mockDesc", "mockAuthor", []);
     const mockCourse2 = new Course("mockTitle2", "mockDesc", "mockAuthor", []);
@@ -44,7 +44,7 @@ describe('CoursesPageComponent', () => {
           provide: CurrentUserService, useClass: mockCurrentUserService
         },
         {
-          provide: CoursesService, useClass: mockCoursesServer
+          provide: CoursesService, useClass: mockCoursesService
         }
       ]
     })
