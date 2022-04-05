@@ -22,4 +22,9 @@ describe('SystemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create main', () => {
+    const mainElem = fixture.debugElement.nativeElement.querySelector('main');
+    expect(mainElem).toBeTruthy();
+  })
 });
